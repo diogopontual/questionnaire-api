@@ -7,13 +7,13 @@ jobs:
   build:
     name: Build image 
     runs-on: ubuntu-latest
-    permissions:
-      id-token: write
+    id-token: write
+      contents: read    # This is required for actions/checkout
     steps:
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v1
       with:
-        role-to-assume: arn:aws:iam::515538249731:oidc-provider/token.actions.githubusercontent.com
+        role-to-assume: arn:aws:iam::515538249731:role/ecr-full-access
         aws-region: us-east-1
 
     - name: Login to Amazon ECR Private
