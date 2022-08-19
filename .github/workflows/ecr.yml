@@ -39,3 +39,10 @@ jobs:
         task-definition: task-definition.json
         container-name: questionnaire-api
         image: ${{ steps.build-image.outputs.image }} 
+    - name: Deploy Amazon ECS task definition
+      uses: aws-actions/amazon-ecs-deploy-task-definition@de0132cf8cdedb79975c6d42b77eb7ea193cf28e
+      with:
+        task-definition: ${{ steps.task-def.outputs.task-definition }}
+        service: questionnaire-api
+        cluster: questionnaire-api
+        wait-for-service-stability: true             
