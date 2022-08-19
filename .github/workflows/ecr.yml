@@ -27,7 +27,7 @@ jobs:
         REPOSITORY: questionnaire-api
         IMAGE_TAG: ${{ github.sha }}
       run: |
-        echo "Deploying to production server on branch $GITHUB_REF"
+        cd questionnaire-api
         docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG ..
         docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG
       
