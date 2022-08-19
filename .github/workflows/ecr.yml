@@ -1,4 +1,4 @@
-name: questionnaire deploy
+name: ECR
 
 on:
   push:
@@ -27,7 +27,7 @@ jobs:
         REPOSITORY: questionnaire-api
         IMAGE_TAG: ${{ github.sha }}
       run: |
-        cd ../
+        ls
         docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG .
         docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG
       
